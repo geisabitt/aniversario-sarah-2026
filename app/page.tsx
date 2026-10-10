@@ -101,13 +101,14 @@ export default function Home() {
     const lembrete = document.getElementById("lembrete-card");
     if (!lembrete) return;
 
-    const { default: html2canvas } = await import("html2canvas");
+   const { default: html2canvas } = await import("html2canvas");
+
     const canvas = await html2canvas(lembrete, {
-      backgroundColor: "#fff8f0",
+      background: "#fff8f0",
       scale: 2.5,
       useCORS: true,
       logging: false,
-    });
+    } as Parameters<typeof html2canvas>[1]);
 
     const link = document.createElement("a");
     link.download = `lembrete-${convite.evento.titulo.toLowerCase().replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "")}.png`;
